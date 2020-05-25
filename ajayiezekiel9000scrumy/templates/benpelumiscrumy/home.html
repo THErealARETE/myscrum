@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            table{
+                width: 50%;
+                height: 100px;
+                margin:50px auto;
+                font-size: large;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                
+            }
+            table,
+            th, td {
+                border: 1px solid black;
+            }
+        
+            th, td {
+                padding: 5px;
+                text-align: left;   
+            }
+
+        </style>
+    </head>
+    <body>
+        <div>
+            <table>
+                <thead class="head">
+                    <tr>
+                        <th>User</th>
+                        <th>Weekly Goals</th>
+                        <th>Daily Goals</th>
+                        <th>Verify Goals</th>
+                        <th>Done Goals</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {%for user in users%} 
+                    <tr>                     
+                        <td>                           
+                            {{user}}<br><br><br>
+                        </td>                       
+                        <td>
+                            {%for week in weekly%}
+                            {% if user == week.user%}
+                            {{week.goal_name}}<br>
+                            {{week.goal_id}} <br>
+                            {%endif%}
+                            {%endfor%}
+                        </td>
+                        <td>
+                            {%for day in daily%}
+                            {% if user == day.user%}
+                            {{day.goal_name}} <br>
+                            {{day.goal_id}} <br>
+                            {%endif%}
+                            {%endfor%}
+                        </td>
+                        <td>
+                            {%for ver in verify%}
+                            {% if user == ver.user%}
+                            {{ver.goal_name}} <br>
+                            {{ver.goal_id}} <br>
+                            {%endif%}
+                            {%endfor%}
+                        </td>
+                        <td>
+                            {%for don in done%}
+                            {% if user == don.user%}
+                            {{don.goal_name}} <br>
+                            {{don.goal_id}} <br>
+                            {%endif%}
+                            {%endfor%}
+                        </td>
+                        
+                    </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
